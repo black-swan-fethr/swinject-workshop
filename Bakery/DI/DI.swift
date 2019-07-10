@@ -5,7 +5,7 @@ enum DI {
     static let container = Container()
 
 
-    static func register() {
+    static func register_0() {
         // MARK-0-1
         // Most basic registration: default impl behind interface
         container.register(Product.self) { _ in
@@ -52,5 +52,45 @@ enum DI {
         container.register(Croissant.self) { resolver, flour, kind in
             Croissant(flour: flour, kind: kind)
         }
+    }
+
+    static func register_1() {
+        container.register(StoreViewModelInterface.self) { _ in
+            StoreViewModel()
+        }
+
+        // MARK-1-2
+        // Property injection
+        container.register(StoreViewController.self) { resolver in
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
+            vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
+            return vc
+        }
+
+        // Property injection with initCompleted
+        container
+            .register(StoreViewController.self, name: "VCWithInitCompleted") { _ in
+                return UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
+            }
+            .initCompleted { resolver, vc in
+                vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
+            }
+
+        // MARK 1-3
+        // Method injection
+        container.register(StoreViewModelInterface.self, name: "Method injected store items") { _ in
+            let vm = StoreViewModel()
+            vm.setItems([])
+            return vm
+        }
+
+        // Method injection with initCompleted
+        container
+            .register(StoreViewModelInterface.self, name: "Method injected store items with init completed") { _ in
+                StoreViewModel()
+            }
+            .initCompleted { resolver, vm in
+                vm.setItems([])
+            }
     }
 }

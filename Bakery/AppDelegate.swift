@@ -16,13 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        DI.register()
+        DI.register_0()
         let test: [Item?] = [
             DI.container.resolve(Sandwich.self),
             DI.container.resolve(Croissant.self, arguments: FlourType.wholeWheat, Croissant.Kind.chocolate),
             DI.container.resolve(Bagel.self)
         ]
         print(test)
+
+        DI.register_1()
+
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = DI.container.resolve(StoreViewController.self, name: "VCWithInitCompleted")
+        window?.makeKeyAndVisible()
 
         return true
     }

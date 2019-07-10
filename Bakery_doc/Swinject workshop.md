@@ -10,13 +10,21 @@ _Let's say we are creating an app for a bakery store. Silly I know, but for this
 
 ![](./Bakery_0.png)
 
-1. Register a default product (_MARK-0-1_). Let's say we think that the most common product is a simple bread:
+Talk about registration keys: 
+	Key(type, name, argument number AND type) --> so two arguments with different types swithced is good to go
+	
+Argument types should be exactly the same as in the registration. No superclasses or optionals or implementation/interface exchanges.
 
-```
-container.register(Product.self) { _ in
-    Bread(flour: .bread)
-}
-```
+## InjectionPatterns - 1
 
-2. Register a default sandwich (_MARK-0-2_). 
+### Initializer injection - 1.1
 
+The previous example with sandwich was this.
+
+### Property injection - 1.2
+
+Ok, if the dependency is optional to the dependent, or if the architecture doesn't permits us to inject through init (UIViewControllers?).
+
+### Method injection - 1.3
+
+Most of the time we would like to avoid this, as methods should be more like interactions or request towards the objects. Passing dependencies in methods hides the importance of that dependency. That said we might end up in situations (3rd party, legacy code) where we have constraints over modification of the created objects but we might still create an instance in a factory method with all of iot's dependencies.
