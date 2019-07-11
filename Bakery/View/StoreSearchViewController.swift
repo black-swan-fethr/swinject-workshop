@@ -1,17 +1,19 @@
 import UIKit
 
-class StoreViewController: UIViewController {
+class StoreSearchViewController: UIViewController {
+    static let storyboardId = "StoreSearchViewController"
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
     
-    var viewModel: StoreViewModelInterface!
+    var viewModel: StoreSearchViewModelInterface!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         bind()
+        viewModel.filter(to: "Bagel")
     }
 
     private func bind() {
@@ -24,12 +26,8 @@ class StoreViewController: UIViewController {
         }
     }
 
-    @IBAction func resetAction(_ sender: Any) {
-        viewModel.reset()
-    }
-
-    @IBAction func toSearch(_ sender: Any) {
-        show(DI.container.resolve(StoreSearchViewController.self)!, sender: nil)
+    @IBAction func backAction(_ sender: Any) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 

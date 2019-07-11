@@ -54,43 +54,100 @@ enum DI {
         }
     }
 
-    static func register_1() {
-        container.register(StoreViewModelInterface.self) { _ in
-            StoreViewModel()
-        }
+//    static func register_1() {
+//        container.register(StoreViewModelInterface.self) { _ in
+//            StoreViewModel()
+//        }
+//
+//        // MARK-1-2
+//        // Property injection
+//        container.register(StoreViewController.self) { resolver in
+//            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
+//            vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
+//            return vc
+//        }
+//
+//        // Property injection with initCompleted
+//        container
+//            .register(StoreViewController.self, name: "VCWithInitCompleted") { _ in
+//                return UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
+//            }
+//            .initCompleted { resolver, vc in
+//                vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
+//            }
+//
+//        // MARK 1-3
+//        // Method injection
+//        container.register(StoreViewModelInterface.self, name: "Method injected store items") { _ in
+//            let vm = StoreViewModel()
+//            return vm
+//        }
+//
+//        // Method injection with initCompleted
+//        container
+//            .register(StoreViewModelInterface.self, name: "Method injected store items with init completed") { _ in
+//                StoreViewModel()
+//            }
+//            .initCompleted { resolver, vm in
+//            }
+//    }
 
-        // MARK-1-2
-        // Property injection
-        container.register(StoreViewController.self) { resolver in
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
-            vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
-            return vc
-        }
-
-        // Property injection with initCompleted
+    static func register_2() {
         container
-            .register(StoreViewController.self, name: "VCWithInitCompleted") { _ in
+            .register(StoreViewController.self) { _ in
                 return UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() as! StoreViewController
             }
             .initCompleted { resolver, vc in
                 vc.viewModel = resolver.resolve(StoreViewModelInterface.self)
             }
+            .inObjectScope(.transient)
 
-        // MARK 1-3
-        // Method injection
-        container.register(StoreViewModelInterface.self, name: "Method injected store items") { _ in
-            let vm = StoreViewModel()
-            vm.setItems([])
-            return vm
-        }
-
-        // Method injection with initCompleted
         container
-            .register(StoreViewModelInterface.self, name: "Method injected store items with init completed") { _ in
-                StoreViewModel()
+            .register(StoreSearchViewController.self) { _ in
+                return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: StoreSearchViewController.storyboardId) as! StoreSearchViewController
             }
-            .initCompleted { resolver, vm in
-                vm.setItems([])
+            .initCompleted { resolver, vc in
+                vc.viewModel = resolver.resolve(StoreSearchViewModelInterface.self)
             }
+            .inObjectScope(.transient)
+
+        container
+            .register(StoreViewModelInterface.self) { resolver in
+                StoreViewModel(
+                    workDay: resolver.resolve(WorkDay.self)!,
+                    itemProvider: resolver.resolve(ItemProviding.self)!
+                )
+            }
+            .inObjectScope(.transient)
+
+        container
+            .register(StoreSearchViewModelInterface.self) { resolver in
+                StoreSearchViewModel()
+            }
+            .inObjectScope(.transient)
+
+        container
+            .register(ItemProviding.self) { resolver in
+                ItemProvider(itemService: resolver.resolve(ItemService.self)!)
+            }
+//            .inObjectScope(.graph)
+
+        container
+            .register(ItemService.self) { resolver in
+                RandomItemService()
+            }
+            .inObjectScope(.container)
+
+        container
+            .register(WorkDay.self) { resolver in
+                ConcreteWorkDay(inventory: resolver.resolve(Inventory.self)!)
+            }
+            .inObjectScope(.weak)
+
+        container
+            .register(Inventory.self) { resolver in
+                RandomInventory(itemProvider: resolver.resolve(ItemProviding.self)!)
+            }
+            .inObjectScope(.weak)
     }
 }

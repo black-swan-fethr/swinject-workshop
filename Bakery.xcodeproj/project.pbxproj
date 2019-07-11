@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4D15674509B76F78A32835D5 /* Pods_Bakery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BF0518C5621A71B87325DA /* Pods_Bakery.framework */; };
+		6E38336722D5D557007605C3 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38336622D5D557007605C3 /* Inventory.swift */; };
+		6E38336922D5D8CA007605C3 /* WorkDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38336822D5D8CA007605C3 /* WorkDay.swift */; };
+		6E38336B22D5DB23007605C3 /* ItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38336A22D5DB23007605C3 /* ItemProvider.swift */; };
+		6E38336E22D5DB99007605C3 /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38336D22D5DB99007605C3 /* ItemService.swift */; };
+		6E38337022D5E6FC007605C3 /* StoreSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38336F22D5E6FC007605C3 /* StoreSearchViewController.swift */; };
+		6E38337222D5E72F007605C3 /* StoreSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38337122D5E72F007605C3 /* StoreSearchViewModel.swift */; };
 		6E621FAD22D4CB0400818992 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E621FAC22D4CB0400818992 /* AppDelegate.swift */; };
 		6E621FB222D4CB0400818992 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E621FB022D4CB0400818992 /* Main.storyboard */; };
 		6E621FB422D4CB0500818992 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E621FB322D4CB0500818992 /* Assets.xcassets */; };
@@ -25,6 +31,12 @@
 
 /* Begin PBXFileReference section */
 		45BF0518C5621A71B87325DA /* Pods_Bakery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bakery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E38336622D5D557007605C3 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		6E38336822D5D8CA007605C3 /* WorkDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkDay.swift; sourceTree = "<group>"; };
+		6E38336A22D5DB23007605C3 /* ItemProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProvider.swift; sourceTree = "<group>"; };
+		6E38336D22D5DB99007605C3 /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		6E38336F22D5E6FC007605C3 /* StoreSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchViewController.swift; sourceTree = "<group>"; };
+		6E38337122D5E72F007605C3 /* StoreSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSearchViewModel.swift; sourceTree = "<group>"; };
 		6E621FA922D4CB0400818992 /* Bakery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bakery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E621FAC22D4CB0400818992 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E621FB122D4CB0400818992 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,6 +68,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E38336322D5D512007605C3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				6E38336D22D5DB99007605C3 /* ItemService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		6E38336C22D5DB2C007605C3 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				6E38336A22D5DB23007605C3 /* ItemProvider.swift */,
+			);
+			path = Providers;
+			sourceTree = "<group>";
+		};
 		6E621FA022D4CB0400818992 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +107,8 @@
 			children = (
 				6E621FC322D4D3B400818992 /* DI */,
 				6E621FC022D4D37700818992 /* Model */,
+				6E38336C22D5DB2C007605C3 /* Providers */,
+				6E38336322D5D512007605C3 /* Services */,
 				6E621FD322D4EEEB00818992 /* ViewModel */,
 				6E621FD822D4EF8000818992 /* View */,
 				6E621FAC22D4CB0400818992 /* AppDelegate.swift */,
@@ -95,10 +125,12 @@
 			children = (
 				6E621FC622D4D4C200818992 /* Drinks.swift */,
 				6E621FD022D4D9BE00818992 /* Food.swift */,
+				6E38336622D5D557007605C3 /* Inventory.swift */,
 				6E621FC822D4D55900818992 /* Items.swift */,
 				6E621FCC22D4D61D00818992 /* Menu.swift */,
 				6E621FC122D4D38700818992 /* Products.swift */,
 				6E621FCE22D4D74100818992 /* Sandwiches.swift */,
+				6E38336822D5D8CA007605C3 /* WorkDay.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				6E621FD422D4EF0100818992 /* StoreViewModel.swift */,
+				6E38337122D5E72F007605C3 /* StoreSearchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -123,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				6E621FD622D4EF7B00818992 /* StoreViewController.swift */,
+				6E38336F22D5E6FC007605C3 /* StoreSearchViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,15 +293,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E38336E22D5DB99007605C3 /* ItemService.swift in Sources */,
+				6E38336922D5D8CA007605C3 /* WorkDay.swift in Sources */,
 				6E621FD722D4EF7B00818992 /* StoreViewController.swift in Sources */,
 				6E621FC722D4D4C200818992 /* Drinks.swift in Sources */,
+				6E38337222D5E72F007605C3 /* StoreSearchViewModel.swift in Sources */,
 				6E621FBF22D4CC8800818992 /* DI.swift in Sources */,
 				6E621FCD22D4D61D00818992 /* Menu.swift in Sources */,
 				6E621FC222D4D38700818992 /* Products.swift in Sources */,
+				6E38336722D5D557007605C3 /* Inventory.swift in Sources */,
 				6E621FD522D4EF0100818992 /* StoreViewModel.swift in Sources */,
+				6E38336B22D5DB23007605C3 /* ItemProvider.swift in Sources */,
 				6E621FCF22D4D74100818992 /* Sandwiches.swift in Sources */,
 				6E621FD122D4D9BE00818992 /* Food.swift in Sources */,
 				6E621FC922D4D55900818992 /* Items.swift in Sources */,
+				6E38337022D5E6FC007605C3 /* StoreSearchViewController.swift in Sources */,
 				6E621FAD22D4CB0400818992 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

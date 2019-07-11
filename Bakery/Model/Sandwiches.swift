@@ -1,5 +1,5 @@
 class Sandwich: Item, Food {
-    enum Topping {
+    enum Topping: CaseIterable {
         case ham
         case cheese
         case salami
@@ -13,5 +13,9 @@ class Sandwich: Item, Food {
     init(product: Product, toppings: [Topping]) {
         self.product = product
         self.toppings = toppings
+    }
+
+    var id: String {
+        return "\(Sandwich.name)-\(product.id)-\(toppings)"
     }
 }

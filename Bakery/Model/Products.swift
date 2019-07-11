@@ -1,4 +1,4 @@
-enum FlourType {
+enum FlourType: CaseIterable {
     case allPurpose
     case bread
     case wholeWheat
@@ -17,10 +17,14 @@ class Bread: Product {
     init(flour: FlourType) {
         self.flour = flour
     }
+
+    var id: String {
+        return "\(Bread.name)-\(flour)"
+    }
 }
 
 class Bagel: Product {
-    enum Style {
+    enum Style: CaseIterable {
         case montreal
         case newYork
         case eastCoast
@@ -36,10 +40,14 @@ class Bagel: Product {
         self.flour = flour
         self.style = style
     }
+
+    var id: String {
+        return "\(Bagel.name)-\(flour)-\(style)"
+    }
 }
 
 class Croissant: Product {
-    enum Kind {
+    enum Kind: CaseIterable {
         case none
         case chocolate
         case vanilla
@@ -53,5 +61,9 @@ class Croissant: Product {
     init(flour: FlourType, kind: Kind) {
         self.flour = flour
         self.kind = kind
+    }
+
+    var id: String {
+        return "\(Croissant.name)-\(flour)-\(kind)"
     }
 }

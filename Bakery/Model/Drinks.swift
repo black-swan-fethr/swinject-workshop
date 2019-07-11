@@ -1,7 +1,7 @@
 protocol Drink: Item {}
 
 class Coffee: Drink {
-    enum Kind {
+    enum Kind: CaseIterable {
         case cappucino
         case americano
         case espresso
@@ -15,10 +15,14 @@ class Coffee: Drink {
     init(kind: Kind) {
         self.kind = kind
     }
+
+    var id: String {
+        return "\(Coffee.name)-\(kind)"
+    }
 }
 
 class Tea: Drink {
-    enum Kind {
+    enum Kind: CaseIterable {
         case black
         case green
         case white
@@ -30,5 +34,9 @@ class Tea: Drink {
 
     init(kind: Kind) {
         self.kind = kind
+    }
+
+    var id: String {
+        return "\(Tea.name)-\(kind)"
     }
 }
