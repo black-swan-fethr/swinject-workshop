@@ -4,5 +4,8 @@ target 'Bakery' do
   use_frameworks!
 
   pod 'Swinject'
+  pod 'SwinjectStoryboard'
+  pod 'SwinjectAutoregistration'
+  # pod 'SwinjectPropertyLoader'
 
 end

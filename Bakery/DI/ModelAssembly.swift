@@ -1,17 +1,14 @@
 import Swinject
+import SwinjectAutoregistration
 
 class ModelAssembly: Assembly {
     func assemble(container: Container) {
         container
-            .register(WorkDay.self) { resolver in
-                ConcreteWorkDay(inventory: resolver.resolve(Inventory.self)!)
-            }
+            .autoregister(WorkDay.self, initializer: ConcreteWorkDay.init)
             .inObjectScope(.weak)
 
         container
-            .register(Inventory.self) { resolver in
-                RandomInventory(itemProvider: resolver.resolve(ItemProviding.self)!)
-            }
+            .autoregister(Inventory.self, initializer: RandomInventory.init)
             .inObjectScope(.weak)
     }
 }

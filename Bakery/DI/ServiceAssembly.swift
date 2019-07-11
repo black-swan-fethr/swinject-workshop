@@ -3,9 +3,7 @@ import Swinject
 class ServiceAssembly: Assembly {
     func assemble(container: Container) {
         container
-            .register(ItemService.self) { resolver in
-                RandomItemService()
-            }
+            .autoregister(ItemService.self, initializer: RandomItemService.init)
             .inObjectScope(.container)
     }
 }

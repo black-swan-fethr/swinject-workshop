@@ -65,6 +65,10 @@ Speak about lazy loaded assemblies.
 ## Thread safety - 6
 Yeah, `.synchronize()`, on assemblies it is a bit awkward, but still works.
 
+## SwinjectAutoregistration - 7
+
+
+
 
 
 
