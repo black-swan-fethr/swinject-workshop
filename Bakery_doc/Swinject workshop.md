@@ -69,6 +69,12 @@ Yeah, `.synchronize()`, on assemblies it is a bit awkward, but still works.
 
 ## SwinjectStoryboard - 8
 
+## Implements - 9
+
+## [Property Loader](https://github.com/Swinject/SwinjectPropertyLoader)
+
+## [Codegen](https://github.com/Swinject/Swinject-CodeGen)
+
 
 
 

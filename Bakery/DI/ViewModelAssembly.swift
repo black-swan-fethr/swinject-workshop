@@ -9,5 +9,9 @@ class ViewModelAssembly: Assembly {
         container
             .autoregister(StoreSearchViewModelInterface.self, initializer: StoreSearchViewModel.init)
             .inObjectScope(.transient)
+            .implements(ExtraInterfaceThatSearchIsCompliantTo.self)
     }
 }
+
+protocol ExtraInterfaceThatSearchIsCompliantTo {}
+extension StoreSearchViewModel: ExtraInterfaceThatSearchIsCompliantTo {}
