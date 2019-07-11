@@ -11,6 +11,6 @@ enum DI {
     ])
 
     static var resolver: Resolver {
-        return assembler.resolver
+        return (assembler.resolver as! Container).synchronize()
     }
 }

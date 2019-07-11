@@ -62,6 +62,9 @@ What if we have parts of the codebase that uses registration but we would like t
 
 Speak about lazy loaded assemblies.
 
+## Thread safety - 6
+Yeah, `.synchronize()`, on assemblies it is a bit awkward, but still works.
+
 
 
 
