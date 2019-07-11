@@ -67,6 +67,7 @@ Yeah, `.synchronize()`, on assemblies it is a bit awkward, but still works.
 
 ## SwinjectAutoregistration - 7
 
+## SwinjectStoryboard - 8
 
 
 

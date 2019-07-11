@@ -1,6 +1,8 @@
+import SwinjectStoryboard
 import UIKit
 
 class StoreViewController: UIViewController {
+    static let storyboardId = "StoreViewController"
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dataLabel: UILabel!
@@ -29,7 +31,12 @@ class StoreViewController: UIViewController {
     }
 
     @IBAction func toSearch(_ sender: Any) {
-        show(DI.resolver.resolve(StoreSearchViewController.self)!, sender: nil)
+        show(
+            SwinjectStoryboard
+                .create(name: "Main", bundle: nil, container: DI.resolver)
+                .instantiateViewController(withIdentifier: StoreSearchViewController.storyboardId),
+            sender: nil
+        )
     }
 }
 

@@ -6,6 +6,7 @@
 //  Copyright © 2019. Balazs Hajagos. All rights reserved.
 //
 
+import SwinjectStoryboard
 import UIKit
 
 @UIApplicationMain
@@ -17,7 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = DI.resolver.resolve(StoreViewController.self)
+        window?.rootViewController =
+            SwinjectStoryboard
+                .create(name: "Main", bundle: nil, container: DI.resolver)
+                .instantiateViewController(withIdentifier: StoreViewController.storyboardId)
         window?.makeKeyAndVisible()
 
         return true
