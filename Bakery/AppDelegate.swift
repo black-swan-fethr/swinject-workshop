@@ -16,10 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        DI.register_2()
+        DI.register()
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = DI.container.resolve(StoreViewController.self)
+        window?.rootViewController = DI.viewContainer.resolve(StoreViewController.self)
         window?.makeKeyAndVisible()
 
         return true

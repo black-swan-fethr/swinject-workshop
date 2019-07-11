@@ -29,7 +29,7 @@ class StoreViewController: UIViewController {
     }
 
     @IBAction func toSearch(_ sender: Any) {
-        show(DI.container.resolve(StoreSearchViewController.self)!, sender: nil)
+        show(DI.viewContainer.resolve(StoreSearchViewController.self)!, sender: nil)
     }
 }
 

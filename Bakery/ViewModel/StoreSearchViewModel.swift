@@ -10,7 +10,7 @@ class StoreSearchViewModel: StoreSearchViewModelInterface {
     private var itemProvider: ItemProviding
 
     init() {
-        self.itemProvider = DI.container.resolve(ItemProviding.self)!
+        self.itemProvider = DI.modelContainer.resolve(ItemProviding.self)!
     }
 
     func filter(to filter: String?) {
