@@ -54,12 +54,13 @@ Where would I use them:
 See these in action.
 
 ## Container hierarchy - 4
+Having all dependencies in the same container seems a bit overwhelming. What if a new dev would like to know what is registered, what layers we have and similar things.
+
+## Assemblies - 5
+What if we have parts of the codebase that uses registration but we would like to group these registrations together. What if we have a framework that may know the interface implemented in another framework? Can we use injection to get the implementation from the other framework under the interface both frameworks uses?
 
 
-
-
-
-
+Speak about lazy loaded assemblies.
 
 
 

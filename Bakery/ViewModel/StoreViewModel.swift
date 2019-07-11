@@ -26,7 +26,7 @@ class StoreViewModel: StoreViewModelInterface {
     func reset() {
         // A bit forced but for the simplicity of the demo let's just nil this out and give it a new value
         workDay = nil
-        workDay = DI.modelContainer.resolve(WorkDay.self)!
+        workDay = DI.resolver.resolve(WorkDay.self)!
         itemsChangeHandler?(displayItemsFromInventory())
     }
 
